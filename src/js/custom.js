@@ -57,6 +57,16 @@ $(document).ready(function() {
         .setTween(tweenPropertyShop)
         .addIndicators()
         .addTo(controller);
+
+    var galleryTween = new TweenMax.staggerFromTo('#trapezium', 5, { right: '0'});
+
+    var galleryScene = new ScrollMagic.Scene({
+        triggerElement: '#container3'
+    })
+        .setPin('#container4')
+        .setTween(galleryTween)
+        .addIndicators()
+        .addTo(controller);
     
 
     // var tweenBlockToRed = new TweenMax.to('#block', 1.5, {
