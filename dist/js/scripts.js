@@ -17,9 +17,15 @@ $(document).ready(function() {
     var controller = new ScrollMagic.Controller();
 
     // var tweenLocationFirst = new TweenMax.staggerFromTo('#location', 1.5, { left: '-40%' }, {left: '35%', ease: Back.easeOut}, 0.15);
-    var tweenLocationFirst = new TweenMax.to('#location', 1.5, { left: '25%', ease: Back.easeOut }, 0.15);
 
-    var tweenlOCATIONoPACITY = new TweenMax.staggerFromTo('#location', 2.5, { opacity: 0.4 }, { opacity: 0.8, ease: Back.easeOut }, 0.15);
+    $('#location').hide();
+    var tweenLocationFirst = new TweenMax.to('#location', 1.5, {
+        display: 'block',
+        left: '25%', 
+        ease: Back.easeOut 
+    }, 0.15);
+
+    var tweenLocation = new TweenMax.staggerFromTo('#location', 2.5, { opacity: 0.4 }, { opacity: 0.8, ease: Back.easeOut }, 0.15);
 
     var firstScene = new ScrollMagic.Scene({
         triggerElement: '#container1',
@@ -33,7 +39,7 @@ $(document).ready(function() {
 
     var tweenNumbers = new TweenMax.staggerFromTo('.number', 15, { opacity: 0 }, { opacity: 1, ease: Back.easeOut }, 0.15);
 
-    var tweenPropertyShop = new TweenMax.to('.property-shop', 2, {opacity: 1}, 0.15);
+    var tweenPropertyShop = new TweenMax.to('#property-shop1', 2, {opacity: 1}, 0.15);
 
     var secondScene = new ScrollMagic.Scene({
         triggerElement: '#container2',
@@ -58,39 +64,85 @@ $(document).ready(function() {
         .addIndicators()
         .addTo(controller);
 
-    var galleryTween = new TweenMax.staggerFromTo('#trapezium', 5, { right: '0'});
+    var galleryTween = new TweenMax.to('.trapezium', 1, { className: "+=end"});
 
     var galleryScene = new ScrollMagic.Scene({
-        triggerElement: '#container3'
+        triggerElement: '#container3',
+        duration: 500,
+        
     })
-        .setPin('#container4')
         .setTween(galleryTween)
         .addIndicators()
         .addTo(controller);
-    
 
-    // var tweenBlockToRed = new TweenMax.to('#block', 1.5, {
-    //     backgroundColor: 'red',
-    // });
+    var tweenPropertyShop2 = TweenMax.fromTo('#property-shop2', 1, {opacity: 0, right: '-100px'}, {opacity: 1, right: '50px', top: '40px'}, 1.5);
 
-    // var tweenBlockToBlack = new TweenMax.to('#block', 1.5, {
-    //     backgroundColor: 'black',
-    // });
+    var propertyShop2Scene = new ScrollMagic.Scene({
+        triggerElement: '#container4'
+    })
+        .setTween(tweenPropertyShop2)
+        .addIndicators()
+        .addTo(controller);
 
-    // var firstScene = new ScrollMagic.Scene({
-    //     triggerElement: '#container'
-    // })
-    //     .setTween(tweenBlockToRed)
-    //     .setPin('#block')
-    //     .addIndicators()
-    //     .addTo(controller);
+    var tweenLocationInfo = TweenMax.staggerFromTo('#location-info', 4, {marginTop: '250px'}, {marginTop: 0, ease: Back.easeOut}, 3.5);
 
-    // var secondScene = new ScrollMagic.Scene({
-    //     triggerElement: '#container2'
-    // })
-    //     .setTween(tweenBlockToBlack)
-    //     .addIndicators()
-    //     .addTo(controller);
+    var locationScene = new ScrollMagic.Scene({
+        triggerElement: '#container4',
+    })
+        .setTween(tweenLocationInfo)
+        .addIndicators()
+        .addTo(controller);
+
+
+    var tweenPropertyShop3 = TweenMax.fromTo('#property-shop3', 1, { opacity: 0, left: '-100px' }, { opacity: 1, left: '50px', bottom: '40px' }, 1.5);
+
+    var propertyShop3Scene = new ScrollMagic.Scene({
+        triggerElement: '#container5',
+    })
+        .setTween(tweenPropertyShop3)
+        .addIndicators()
+        .addTo(controller);
+
+    var tweenAreaInfo = TweenMax.fromTo('#area-info', 2.5, { opacity: 0, marginTop: '200px' }, { opacity: 1, marginTop: 0, ease: Back.easeOut }, 0.15);
+
+    var areaScene = new ScrollMagic.Scene({
+        triggerElement: '#container5',
+    })
+        .setTween(tweenAreaInfo)
+        .addIndicators()
+        .addTo(controller);
+
+    var amenitiesTween = new TweenMax.to('.amenities-wrapper', 1, { className: "+=end" });
+
+    var amenitiesScene = new ScrollMagic.Scene({
+        triggerElement: '#container6',
+        duration: 500,
+
+    })
+        .setTween(amenitiesTween)
+        .addIndicators()
+        .addTo(controller);
+
+    var transportTween = new TweenMax.to('.transport-info', 3, { className: '+=fadeInUp' });
+    var transportTitleTween = new TweenMax.staggerFromTo('#transport-title', 2, {marginLeft: '-400px'}, {marginLeft: '-40px'}, 0.15);
+    //var transportInfoTween = new TweenMax.staggerFromTo('#transport-info', 2, { marginBottom: '-100px' }, { marginLeft: 0 }, 0.15);
+
+    var transportTitleScene = new ScrollMagic.Scene({
+        triggerElement: '#container6',
+        duration: 600,
+
+    })
+        .setTween(transportTitleTween)
+        .addIndicators()
+        .addTo(controller);
+
+    var transportInfoScene = new ScrollMagic.Scene({
+        triggerElement: '#transporttrigger',
+
+    })
+        .setTween(transportTween)
+        .addIndicators()
+        .addTo(controller);
 
     
 });
